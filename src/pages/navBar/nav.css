@@ -1,5 +1,6 @@
 .main {
     background-color: #01A7E1;
+    border-radius: 0px 0px 85px 85px;
     box-shadow: 0px 10px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
     min-height: 90px;
@@ -20,7 +21,7 @@
   .pagesLists {
     justify-content: center;
     display: flex;
-    flex-direction: column; * Alterado para coluna */
+    flex-direction: column; 
     color: #ffff;
     list-style-type: none;
     transition: right 0.3s ease;
