@@ -1,9 +1,9 @@
 
-import '../navBar/nav.css';
-import logo from "../../images/logo.svg";
 import { NavLink } from 'react-router-dom';
 import { LoginButton } from "../../components/loginButton";
 import { useState } from 'react';
+import '../navBar/nav.css';
+import logo from "../../images/logo.svg";
 
 interface NavBarProps {
   currentPage: string;
