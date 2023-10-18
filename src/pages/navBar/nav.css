@@ -46,16 +46,12 @@
     top: 90px;
     right: 0;
     background-color: #2B4759;
-    width: 200px;
-    height: 1000px;
     z-index: 1;
-    padding: 0px;
-    .loginButton{
-      magin-top: 1000px;
-    }
   }
+
   .nav-links.active {
     display: flex;
+
   }
   
   .nav-link {
@@ -76,6 +72,7 @@
     .pagesLists {
       flex-direction: row;
       padding-right: 60%;
+      width: 1000px;
     }
   
     .pagesLists li {
@@ -90,13 +87,14 @@
       top: 0;
       right: 0;
       background-color: transparent;
-      width: auto;
+      width: 1000px;
       transform: translateX(0);
       transition: right 0.3s ease;
     }
   
     .nav-links.active {
       display: flex;
+      width: 1000px;
     }
   
     .nav-icon {
