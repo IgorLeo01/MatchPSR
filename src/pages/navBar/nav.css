@@ -39,7 +39,7 @@
   }
   
   .nav-links {
-    display: none; /* Alterado para display: none; */
+    display: none; 
     flex-direction: column;
     position: absolute;
     font-size: 15px;
@@ -47,12 +47,13 @@
     right: 0;
     background-color: #2B4759;
     width: 200px;
-    height: 100%;
+    height: 1000px;
     z-index: 1;
-    transition: right 0.3s ease;
     padding: 0px;
+    .loginButton{
+      magin-top: 1000px;
+    }
   }
-  
   .nav-links.active {
     display: flex;
   }

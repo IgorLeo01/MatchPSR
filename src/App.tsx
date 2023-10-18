@@ -1,26 +1,27 @@
-import React from "react"
-import "./App.css";
-import Home from "./pages/home/home";
-import NavBar from "./pages/navBar/navbar";
-import { BrowserRouter as Router,  Route, Routes } from "react-router-dom";
-import Partner from "./pages/partner/partner";
-import Vacancies from "./pages/vacancies/vacancies";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavBar from './pages/navBar/navbar';
+import Home from './pages/home/home';
+import Vacancies from './pages/vacancies';
+import SignIn from "./pages/signIn/signIn"
 
-function App() {
+const Layout: React.FC = ({ children }) => (
+  <>
+    <NavBar />
+    {children}
+  </>
+);
+
+const App: React.FC = () => {
   return (
-    <>
-      <Router>
-        <NavBar currentPage={'teste'} />
-        <div className="pages">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/partners" element={<Partner />} />
-            <Route path="/vacancies" element={<Vacancies />} />
-          </Routes>
-        </div>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/vacancies" element={<Layout><Vacancies /></Layout>} />
+        <Route path="/signIn" element={<SignIn />}/>
+      </Routes>
+    </Router>
   );
-}
+};
 
-export default App
+export default App;

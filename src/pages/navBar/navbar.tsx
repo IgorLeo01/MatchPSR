@@ -1,4 +1,4 @@
-
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NavLink } from 'react-router-dom';
 import { LoginButton } from "../../components/loginButton";
 import { useState } from 'react';
@@ -6,10 +6,11 @@ import '../navBar/nav.css';
 import logo from "../../images/logo.svg";
 
 interface NavBarProps {
-  currentPage: string;
+  currentPage?: string;
+  onHideNavbar?: () => void;
 }
 
-export default function NavBar({ currentPage }: NavBarProps) {
+const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -49,8 +50,8 @@ export default function NavBar({ currentPage }: NavBarProps) {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/entrar" className="nav-link" onClick={handleClick}>
-                <LoginButton>Entrar</LoginButton>
+              <NavLink to="/signIn" className="nav-link" onClick={handleClick}>
+                <LoginButton className='loginButton'>Entrar</LoginButton>
               </NavLink>
             </li>
           </ul>
@@ -65,3 +66,5 @@ export default function NavBar({ currentPage }: NavBarProps) {
     </nav>
   )
 }
+
+export default NavBar;
