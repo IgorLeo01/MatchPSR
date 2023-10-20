@@ -50,7 +50,7 @@ const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/signIn" className="nav-link" onClick={handleClick}>
+              <NavLink to="/login" className="nav-link" onClick={handleClick}>
                 <LoginButton className='loginButton'>Entrar</LoginButton>
               </NavLink>
             </li>
