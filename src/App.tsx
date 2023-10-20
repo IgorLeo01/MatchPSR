@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './pages/navBar/navbar';
 import Home from './pages/home/home';
 import Vacancies from './pages/vacancies';
-import SignIn from "./pages/signIn/signIn"
+import Login from "./pages/login"
+import { AuthProvider } from './context/AuthContext';
 
-const Layout: React.FC = ({ children }) => (
+interface LayoutProps {
+  children: ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => (
   <>
     <NavBar />
     {children}
@@ -14,13 +19,33 @@ const Layout: React.FC = ({ children }) => (
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout><Home /></Layout>} />
-        <Route path="/vacancies" element={<Layout><Vacancies /></Layout>} />
-        <Route path="/signIn" element={<SignIn />}/>
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route 
+            path="/" 
+            element={
+              <Layout>
+                <Home />
+              </Layout>
+            } 
+          />
+
+          <Route 
+            path="/vacancies" 
+            element={
+              <Layout>
+                <Vacancies />
+              </Layout>
+            } 
+          />
+          <Route 
+            path="/login" 
+            element={<Login />}
+          />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 };
 
