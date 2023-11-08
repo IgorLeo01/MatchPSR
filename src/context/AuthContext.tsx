@@ -13,26 +13,30 @@ interface AuthContextState {
 const AuthContext = createContext<AuthContextState>({} as AuthContextState);
 
 const AuthProvider: React.FC<LayoutProps> = ({ children }) => {
-  const [token, setToken] = useState<string | null>('');
-
-  const signIn = useCallback((credentials: UserCredentials) => {
-    return authService
-      .login(credentials)
-      .then((responseToken) => {
-        localStorage.setItem('@PermissionYT:token', responseToken || '');
-        setToken(responseToken);
-        console.log("Token received:", responseToken);
-      })
-      .catch((error) => {
-        console.error("Error during login:", error);
-        throw error;
-      });
-  }, []);
-  return (
-    <AuthContext.Provider value={{ token, signIn }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-
+    const [token, setToken] = useState<string | null>(() => {
+      const storedToken = localStorage.getItem('@PermissionYT:token');
+      return storedToken || null;
+    });
+  
+    const signIn = useCallback((credentials: UserCredentials) => {
+      return authService
+        .login(credentials)
+        .then((responseToken) => {
+          setToken(responseToken);
+          localStorage.setItem('@PermissionYT:token', responseToken || ''); 
+          console.log("Token received:", responseToken);
+        })
+        .catch((error) => {
+          console.error("Error during login:", error);
+          throw error;
+        });
+    }, []);
+  
+    return (
+      <AuthContext.Provider value={{ token, signIn }}>
+        {children}
+      </AuthContext.Provider>
+    );
+  };
+  
 export { AuthContext, AuthProvider };

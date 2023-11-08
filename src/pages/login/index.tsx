@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, {useContext} from 'react'
+import React, {useContext,} from 'react'
+import { useNavigate } from 'react-router-dom';
 import * as S from './style'
 import logo from "../../images/logo.svg"
 import { Title } from '../../components/title'
@@ -12,7 +13,8 @@ type FieldType = {
 };
 
 function Login() {
-  const { signIn } = useContext( AuthContext);
+  const { signIn } = useContext(AuthContext);
+  const navigate  = useNavigate();
   const onFinish = async (values: FieldType) => {
     try {
       const credentials: UserCredentials = {
@@ -85,7 +87,7 @@ function Login() {
                     Entrar
                   </Button>
                 </Form.Item>
-                <span style={{fontSize:'13px'}}>Novo aqui?<a style={{color: '#01A7E1'}}>Criar Conta</a></span>
+                <span style={{fontSize:'13px', margin: ' 0 0 0 10vh '}}>Novo aqui? <a onClick={() => navigate('/signup')} style={{color: '#01A7E1'}}>Criar Conta</a></span>
               </Form>
             </S.ImputsForm>
           </S.FormContainer>
