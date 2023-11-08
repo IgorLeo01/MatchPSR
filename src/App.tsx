@@ -5,6 +5,7 @@ import Home from './pages/home/home';
 import Vacancies from './pages/vacancies';
 import Login from "./pages/login"
 import { AuthProvider } from './context/AuthContext';
+import CreateAccount from './pages/CreateAccount';
 
 interface LayoutProps {
   children: ReactNode;
@@ -42,6 +43,10 @@ const App: React.FC = () => {
           <Route 
             path="/login" 
             element={<Login />}
+          />
+          <Route
+            path="/signup"
+            element={<CreateAccount />}
           />
         </Routes>
       </Router>
