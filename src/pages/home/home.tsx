@@ -3,6 +3,7 @@ import { Button } from '../../components/buttons'
 import * as s from './style'
 import imageHome from "../../images/image-home.svg"
 import AboutUs from './aboutUs/aboutUs'
+import Partner from './partner/partner'
 
 function Home() {
 
@@ -33,9 +34,8 @@ function Home() {
           style={{ marginLeft: '150px'}}
         />
       </s.Content>
-      <div>
-        <AboutUs />
-      </div>
+      <AboutUs/>
+      <Partner/>
     </s.Page>
   )
 }

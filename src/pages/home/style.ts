@@ -14,11 +14,13 @@ export const Content = styled.div`
 
 
 export const Page = styled.div`
-    display: flex; /* Adicione display flex */
-    flex-direction: column; /* Ajuste para column */
+    display: flex; 
+    flex-direction: column; 
     align-items: center; 
     justify-content: center; 
     background-color: #FFFFFF;
-    width: 100%;
+    width: auto;
+    height: 100%;
 `;
+
 
