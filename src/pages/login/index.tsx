@@ -5,6 +5,8 @@ import { Title } from '../../components/title';
 import { Button, Form, Input } from 'antd';
 import { AuthContext } from '../../context/AuthContext';
 import InputMask from 'react-input-mask';
+import CreateAccount from '../CreateAccount';
+import { Link } from 'react-router-dom';
 
 type FieldType = {
   username: string;
@@ -101,6 +103,7 @@ function Login() {
                         Entrar
                       </Button>
                     </Form.Item>
+                    <h5>Novo aqui? <Link to="/signup">Crie sua conta</Link></h5>
                   </Form>
               </S.ImputsForm>
             </S.FormContainer>

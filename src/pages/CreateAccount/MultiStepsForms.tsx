@@ -1,12 +1,14 @@
 import React from "react";
 import { useForm, useStep } from "react-hooks-helper";
-import Personal from "./Steps/personal";
+import UserType from "./Steps/UserType";
 import Professional from "./Steps/professional";
 import FormProps from "./FormProps";
+import Person from "./Steps/Person";
 
 interface FormData {
   Name: string;
   birth: string;
+  UserTypeData: string;
   email: string;
   phone: string;
   password: string;
@@ -26,38 +28,42 @@ interface FormData {
 const defaultFormConfig: FormData = {
   Name: "",
   birth: "",
+  UserTypeData: "",
   email: "",
   phone: "",
   password: "",
   zip: "",
   city: "",
   CNH: "",
-  document: 0, 
+  document: 0,
   address: "",
-  skills: [], 
-  companyName: [], 
+  skills: [],
+  companyName: [],
   position: [],
-  working: false, 
+  working: false,
   start: "",
   end: "",
 };
 
 const steps = [
-  { id: "Pessoais" },
-  { id: "Profissionais" },
+  { id: "initial" }, //identificação
+  { id: "person" }, //informações para pessoas
+  { id: "instituicao" }, //informações para empresas e organizações
 ];
 
 const MultiStepForm: React.FC = () => {
-const [formData, setForm] = useForm<FormData>({ defaultFormConfig, steps });
+  const [formData, setForm] = useForm<FormData>({ ...defaultFormConfig, steps });
   const { step, navigation } = useStep({ initialStep: 0, steps });
   const { id } = step;
 
   const props: FormProps = { formData, setForm, navigation };
 
   switch (id) {
-    case "Pessoais":
-      return <Personal {...props} />;
-    case "Profissionais":
+    case "initial":
+      return <UserType {...props} />;
+    case "person":
+      return <Person {...props} />;
+    case "instituicao":
       return <Professional {...props} />;
     default:
       return null;
