@@ -6,17 +6,20 @@ import Person from '../../components/Steps/Person';
 import Professional from '../../components/Steps/professional';
 
 import { useForm } from '../../hooks/useForm';
+import Institution from '../../components/Steps/Institution';
 
 const formData = {
   userType: 0,
   name: "",
   document: "",
   email: "",
-  birth: "",
+  password: "",
+  dateOfBirth: "",
   phone: "",
   adress: "",
   city: "",
-  cep: "",
+  zipCode: "",
+  NumberOfEmployees: "",
   cnh: false,
   skills: "",
   professionalExperience: "",
@@ -29,6 +32,7 @@ const CreateAccount: React.FC = () => {
     UserType , 
     Person , 
     Professional,
+    Institution,
   ];
   
   const { currentStep, currentComponent, changeStep, isLastStep } = useForm(formComponents);

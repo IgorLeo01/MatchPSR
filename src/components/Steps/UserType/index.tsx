@@ -5,6 +5,7 @@ import { StepProps } from '../../../hooks/StepsProps';
 
 
 const UserType: FC<StepProps> = ({ onNextStep, data, updateFielHandler}) => {
+
   const handleClick = (setUserType:number, step: number) => {
     console.log(setUserType)
     updateFielHandler("userType", setUserType);
@@ -57,7 +58,7 @@ const UserType: FC<StepProps> = ({ onNextStep, data, updateFielHandler}) => {
             border: 'solid 1px #01A7E1',
             color: '#01A7E1',
           }}
-          onClick={() => handleClick(2, 2)}
+          onClick={() => handleClick(2, 3)}
         >
           <BankFilled style={{ fontSize: '60px', paddingBottom: '10px' }} />
           <h5>Instituição</h5>
@@ -77,7 +78,7 @@ const UserType: FC<StepProps> = ({ onNextStep, data, updateFielHandler}) => {
             border: 'solid 1px #01A7E1',
             color: '#01A7E1',
           }}
-          onClick={() => handleClick(3, 2)}
+          onClick={() => handleClick(3, 3)}
         >
           <HeartOutlined style={{ fontSize: '60px', paddingBottom: '10px' }} />
           <h5>Organização</h5>
