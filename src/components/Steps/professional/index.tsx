@@ -8,6 +8,7 @@ const Professional: FC<StepProps> = ({ data, updateFielHandler}) => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    updateFielHandler(name, value);
     console.log("FORM ", name, value);
   };
 
