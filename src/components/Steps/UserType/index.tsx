@@ -1,17 +1,13 @@
 import React, { FC } from 'react';
 import { ConfigProvider, Form, Steps } from 'antd';
 import { BankFilled, HeartOutlined, UserOutlined } from '@ant-design/icons';
-import { useForm } from '../../../hooks/useForm';
-import Person from '../Person';
-import Professional from '../professional';
+import { StepProps } from '../../../hooks/StepsProps';
 
-interface UserTypeProps {
-  onNextStep: (step: number) => void;
-}
 
-const UserType: FC<UserTypeProps> = ({ onNextStep }) => {
+const UserType: FC<StepProps> = ({ onNextStep, data, updateFielHandler}) => {
   const handleClick = (setUserType:number, step: number) => {
     console.log(setUserType)
+    updateFielHandler("userType", setUserType);
     onNextStep(step);
   };
 
@@ -40,6 +36,7 @@ const UserType: FC<UserTypeProps> = ({ onNextStep }) => {
             border: 'solid 1px #01A7E1',
             color: '#01A7E1',
           }}
+          value={data.userType}
           onClick={() => handleClick(1, 1)}
         >
           <UserOutlined style={{ fontSize: '60px', paddingBottom: '10px' }} />
@@ -48,6 +45,7 @@ const UserType: FC<UserTypeProps> = ({ onNextStep }) => {
 
         <button
           type="button"
+          value={data.userType}
           style={{
             marginTop: '150px',
             marginLeft: '15%',
@@ -67,6 +65,7 @@ const UserType: FC<UserTypeProps> = ({ onNextStep }) => {
 
         <button
           type="button"
+          value={data.userType}
           style={{
             marginTop: '150px',
             marginLeft: '15%',

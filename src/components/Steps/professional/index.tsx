@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Input } from 'antd';
 import React, { FC } from 'react';
+import { StepProps } from '../../../hooks/StepsProps';
 
 
-const Professional: FC = () => {
+const Professional: FC<StepProps> = ({ data, updateFielHandler}) => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -15,7 +16,7 @@ const Professional: FC = () => {
       <h3>Nome</h3>
         <Input
           name="Name" 
-          value={Name}
+          value={data.name}
           onChange={handleInputChange}
         /> 
       </div>
