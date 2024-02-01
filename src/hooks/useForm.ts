@@ -23,6 +23,6 @@ export function useForm(steps: React.ComponentType<any>[]): FormProps {
     currentStep,
     currentComponent: steps[currentStep],
     changeStep,
-    isLastStep: currentStep === 3 || currentStep === 4 ? true : false,
+    isLastStep: currentStep === 2 || currentStep === 4 ? true : false,
   };
 }

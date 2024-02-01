@@ -51,9 +51,6 @@ const Person: FC<StepProps> = ({data, updateFielHandler}) => {
             {
               title: 'Informações Profissionais',
             },
-            {
-              title: 'Conclusão',
-            },
           ]}
         />
       </ConfigProvider>

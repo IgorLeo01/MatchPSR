@@ -43,9 +43,6 @@ const Institution: FC<StepProps> = ({data, updateFielHandler}) => {
             {
               title: 'Informações',
             },
-            {
-              title: 'Conclusão',
-            },
           ]}
         />
       </ConfigProvider>
