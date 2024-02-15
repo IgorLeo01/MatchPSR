@@ -8,18 +8,17 @@ export const Content = styled.div`
     -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.29);
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.29);
     .cabecalho{
-        display: flex;
         height: 40px;
         margin-left: 20px;
         padding-top: 15px;
         span{
             font-size: 15px;
             padding-top: -20px;
-            margin-left: 15px;
+            margin-left: -85px;
         }
         h1{
             font-size: 17px;
-            margin-left: -85px;
+            margin-left: -185px;
             color: #2B4759;
         }
     }

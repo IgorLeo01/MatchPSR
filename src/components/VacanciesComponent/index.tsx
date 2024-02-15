@@ -17,6 +17,7 @@ interface VacanciesProps {
 }
 
 const VacanciesComponent: React.FC<VacanciesProps> = ({ vaga, logo, empresa, local, competencias, qntVagas, vacancyRoute, }) => {
+  
   const competenciasList = competencias.join(', ');
   const competenciasToShow = competencias.slice(0, 2);
   const competenciasExtras = competencias.length > 2 ? competencias.length - 2 : 0;
