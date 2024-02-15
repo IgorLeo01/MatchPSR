@@ -1,6 +1,5 @@
 import React from 'react'
 import * as s from './style'
-import { NavLink } from 'react-router-dom'
 import cocaLogo from '../../images/image 1.png'
 import VacanciesComponent from '../../components/VacanciesComponent';
 function Vacancies() {
@@ -17,6 +16,7 @@ function Vacancies() {
             local={local} 
             competencias={competencias}
             qntVagas={qntVagas}
+            vacancyRoute={vacancyRoute}
             />
           }} */}
           <VacanciesComponent
