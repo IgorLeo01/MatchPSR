@@ -25,7 +25,9 @@ function Vacancies() {
             empresa="Coca Cola"
             local="Recife, Pernambuco - Brasil"
             competencias={[["Limpar"],["Arrumar"],["Sair"]]} //não sei pq tá dando erro, mas está funcionando
-            qntVagas={3}/>
+            qntVagas={3}
+            vacancyRoute="login"
+            />
         </div>
       </s.Content>
     </s.Page>

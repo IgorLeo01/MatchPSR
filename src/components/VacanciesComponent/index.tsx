@@ -13,10 +13,11 @@ interface VacanciesProps {
   competencias: string[];
   qntVagas: number;
   local: string;
+  vacancyRoute: string;
 }
 
-const VacanciesComponent: React.FC<VacanciesProps> = ({ vaga, logo, empresa, local, competencias, qntVagas }) => {
-  const competenciasI = competencias.join(', ');
+const VacanciesComponent: React.FC<VacanciesProps> = ({ vaga, logo, empresa, local, competencias, qntVagas, vacancyRoute, }) => {
+  const competenciasList = competencias.join(', ');
   const competenciasToShow = competencias.slice(0, 2);
   const competenciasExtras = competencias.length > 2 ? competencias.length - 2 : 0;
 
@@ -54,7 +55,7 @@ const VacanciesComponent: React.FC<VacanciesProps> = ({ vaga, logo, empresa, loc
           <span>
             Competências: {competencias.length > 2
             ? `${competenciasToShow.join(', ')} e mais ${competenciasExtras}`
-            : competenciasI}
+            : competenciasList}
           </span>
         </div>
 
@@ -69,8 +70,12 @@ const VacanciesComponent: React.FC<VacanciesProps> = ({ vaga, logo, empresa, loc
           </span>
         </div>
         <div className='descriptionButtons'>
-          <Button isBlueOutline style={{ width: '100px', fontSize: '12px', height: '25px' }}>Saiba mais</Button>
+          <NavLink to={`/${vacancyRoute}`}>
+            <Button isBlueOutline style={{ width: '100px', fontSize: '12px', height: '25px' }}>Saiba mais</Button>
+          </NavLink>
+          <NavLink to={`/${vacancyRoute}`}>
           <Button isBlue style={{ width: '100px', marginLeft: '10px', fontSize: '12px', height: '25px' }} >Aplicar</Button>
+          </NavLink>
         </div>
       </div>
     </s.Content>
