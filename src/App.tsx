@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './pages/navBar/navbar';
 import Home from './pages/home/home';
-import Vacancies from './pages/vacancies';
+import Vacancies from './pages/Vacancies/vacancies';
 import Login from "./pages/login"
 import { AuthProvider } from './context/AuthContext';
 import CreateAccount from './pages/CreateAccount';
@@ -47,6 +47,10 @@ const App: React.FC = () => {
           <Route
             path="/signup"
             element={<CreateAccount />}
+          />
+          <Route
+            path="/vacancies"
+            element={<Vacancies />}
           />
         </Routes>
       </Router>
