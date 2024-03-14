@@ -7,23 +7,19 @@ import Professional from '../../components/Steps/professional';
 
 import { useForm } from '../../hooks/useForm';
 import Institution from '../../components/Steps/Institution';
+import instance from '../../axiosConfig';
 
 const formData = {
-  userType: 0,
-  name: "",
-  document: "",
+  nome: "",  
+  cnpj: "",
+  numeroFuncionarios: "",
+  contato_info: "",
   email: "",
-  password: "",
-  dateOfBirth: "",
-  phone: "",
-  adress: "",
-  city: "",
-  zipCode: "",
-  NumberOfEmployees: "",
-  cnh: false,
-  skills: "",
-  professionalExperience: "",
-}
+  senha: "",
+  endereco: "", 
+  cidade: "",
+  cep: "",
+};
 
 const CreateAccount: React.FC = () => {
   const [data, setData] = useState(formData);
@@ -37,15 +33,32 @@ const CreateAccount: React.FC = () => {
   
   const { currentStep, currentComponent, changeStep, isLastStep } = useForm(formComponents);
  
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    changeStep(currentStep + 1, e);
+    console.log('Data to be sent:', data);
+    try {
+      const response = await instance.post('/ongs/cadastro', data, {
+        headers: {
+          'Content-Type': 'application/json',
+      },
+      });
+  
+      if (response.status === 201) {
+        console.log('Empresa cadastrada com sucesso:', response.data);
+      } else {
+        console.error('Falha ao cadastrar empresa');
+      }
+    } catch (error) {
+      console.error('Erro com dados da empresa:', error);
+    }
   };
   const updateFielHandler = (key: string, value: any) => {
-    setData((prev) =>{
-      return{...prev, [key]: value};
+    console.log('Updating field:', key, 'with value:', value);
+    setData((prev) => {
+      return { ...prev, [key]: value };
     });
-  }
+  };
+  
 
   return (
     <S.SingUpPage>
