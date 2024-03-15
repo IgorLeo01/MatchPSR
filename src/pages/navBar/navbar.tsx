@@ -45,11 +45,6 @@ const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/partners" className="nav-link" onClick={handleClick}>
-                Parceiros
-              </NavLink>
-            </li>
-            <li>
               <NavLink to="/login" className="nav-link" onClick={handleClick}>
                 <LoginButton className='loginButton'>Entrar</LoginButton>
               </NavLink>

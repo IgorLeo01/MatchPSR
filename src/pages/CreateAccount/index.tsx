@@ -10,15 +10,18 @@ import Institution from '../../components/Steps/Institution';
 import instance from '../../axiosConfig';
 
 const formData = {
-  nome: "",  
-  cnpj: "",
-  numeroFuncionarios: "",
-  contato_info: "",
+  name: "",
+  birth: "",
   email: "",
-  senha: "",
-  endereco: "", 
-  cidade: "",
-  cep: "",
+  phone: "",
+  password: "",
+  zip: "",
+  city: "",
+  document: 0, 
+  address: "",
+  skills: "", 
+  professionalExperience: "", 
+  numberOfEmployees: "",
 };
 
 const CreateAccount: React.FC = () => {
@@ -53,7 +56,6 @@ const CreateAccount: React.FC = () => {
     }
   };
   const updateFielHandler = (key: string, value: any) => {
-    console.log('Updating field:', key, 'with value:', value);
     setData((prev) => {
       return { ...prev, [key]: value };
     });

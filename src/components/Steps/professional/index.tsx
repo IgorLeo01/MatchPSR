@@ -7,27 +7,26 @@ import TextArea from '../../inportForm/TextArea';
 
 const Professional: FC<StepProps> = ({ data, updateFielHandler}) => {
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
+    const { value } = e.target;
     updateFielHandler(name, value);
-    console.log("FORM ", name, value);
   };
 
   return (
     <div className="form">
         <TextArea
         name="Habilidades"
-        value={data.name} 
+        value={data.skills} 
         required={true} 
-        onChange={handleInputChange}   
+        onChange={(e)=>handleInputChange(e, "skills")}   
         placeHolder='Aqui, você terá a oportunidade de compartilhar e explorar as diversas Habilidades que moldaram a sua vida. '       
         /> 
         <TextArea
         name="Experiência profissional"
-        value={data.name} 
+        value={data.professionalExperience} 
         required={true} 
         placeHolder='Aqui, você terá a oportunidade de compartilhar e explorar as diversas vivências que moldaram a sua vida. Este é um espaço aberto e acolhedor, projetado para que você possa expressar-se livremente e refletir sobre as suas experiências mais significativas.'
-        onChange={handleInputChange}          
+        onChange={(e)=>handleInputChange(e, "professionalExperience")}          
         /> 
         <ConfigProvider
         theme={{

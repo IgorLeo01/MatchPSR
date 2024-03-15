@@ -13,7 +13,7 @@ type FieldType = {
   password: string;
 };
 
-function Login() {
+export const Login = () => {
   const { signIn } = useContext(AuthContext);
   const [formattedUsername, setFormattedUsername] = useState<string>('');
   const [rawUsername, setRawUsername] = useState<string>(''); 

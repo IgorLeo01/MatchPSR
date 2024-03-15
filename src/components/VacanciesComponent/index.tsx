@@ -5,7 +5,7 @@ import localImg from '../../images/HomeFilled.svg'
 import competenciasImg from '../../images/Group.svg'
 import quantidadeImg from '../../images/Group (1).svg'
 import { Button } from '../buttons'
-
+import { useNavigate } from 'react-router-dom'
 interface VacanciesProps {
   vaga: string;
   logo: string;
@@ -17,11 +17,19 @@ interface VacanciesProps {
 }
 
 const VacanciesComponent: React.FC<VacanciesProps> = ({ vaga, logo, empresa, local, competencias, qntVagas, vacancyRoute, }) => {
-  
+  const sendTo = useNavigate();
+
   const competenciasList = competencias.join(', ');
   const competenciasToShow = competencias.slice(0, 2);
   const competenciasExtras = competencias.length > 2 ? competencias.length - 2 : 0;
-
+ 
+  const sendToFunction = (path: number) => {
+    if (path === 1) {
+        sendTo(vacancyRoute); 
+    } else {
+        sendTo(vacancyRoute); 
+    }
+};
   return (
     <s.Content>
       <div className='cabecalho'>
@@ -71,12 +79,10 @@ const VacanciesComponent: React.FC<VacanciesProps> = ({ vaga, logo, empresa, loc
           </span>
         </div>
         <div className='descriptionButtons'>
-          <NavLink to={`/${vacancyRoute}`}>
-            <Button isBlueOutline style={{ width: '100px', fontSize: '12px', height: '25px' }}>Saiba mais</Button>
-          </NavLink>
-          <NavLink to={`/${vacancyRoute}`}>
-          <Button isBlue style={{ width: '100px', marginLeft: '10px', fontSize: '12px', height: '25px' }} >Aplicar</Button>
-          </NavLink>
+          <div>
+            <Button isBlueOutline style={{ width: '100px', fontSize: '12px', height: '25px' }} onClick={() => sendToFunction(1)}>Saiba mais</Button>
+            <Button isBlue style={{ width: '100px', marginLeft: '10px', fontSize: '12px', height: '25px' }} onClick={() => sendToFunction(0)}>Aplicar</Button>
+          </div>
         </div>
       </div>
     </s.Content>

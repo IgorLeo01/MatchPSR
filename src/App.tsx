@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './pages/navBar/navbar';
 import Home from './pages/home/home';
 import Vacancies from './pages/Vacancies/vacancies';
-import Login from "./pages/login"
-import { AuthProvider } from './context/AuthContext';
+import {Login} from "./pages/login"
 import CreateAccount from './pages/CreateAccount';
+import { AuthProvider } from './context/Auth/AuthProvider';
+
 
 interface LayoutProps {
   children: ReactNode;
