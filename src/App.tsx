@@ -6,6 +6,7 @@ import Vacancies from './pages/Vacancies/vacancies';
 import {Login} from "./pages/login"
 import CreateAccount from './pages/CreateAccount';
 import { AuthProvider } from './context/Auth/AuthProvider';
+import { RequireAuth } from './context/Auth/RequireAuth';
 
 
 interface LayoutProps {
@@ -37,7 +38,9 @@ const App: React.FC = () => {
             path="/vacancies" 
             element={
               <Layout>
-                <Vacancies />
+                <RequireAuth>
+                  <Vacancies />
+                </RequireAuth>
               </Layout>
             } 
           />

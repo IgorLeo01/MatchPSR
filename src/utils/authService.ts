@@ -2,9 +2,10 @@ import axios from 'axios';
 
 
 export const authService = {
-  async login(credentials: UserCredentials) {
+  async postLogin(credentials: UserCredentials) {
     try {
-      const response = await axios.post<{ token: string }>('/api/login', credentials);
+      const response = await axios.post<{ token: string }>(`http://localhost:8080/auth/login`, credentials);
+      console.log('Resposta do login:', response.data); // Adicionando log de debugging
       return response.data.token;
     } catch (error) {
       console.error('Error during login:', error);
