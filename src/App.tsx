@@ -7,6 +7,7 @@ import {Login} from "./pages/login"
 import CreateAccount from './pages/CreateAccount';
 import { AuthProvider } from './context/Auth/AuthProvider';
 import { RequireAuth } from './context/Auth/RequireAuth';
+import Profile from './pages/profile/profile';
 
 
 interface LayoutProps {
@@ -54,6 +55,10 @@ const App: React.FC = () => {
         <Route
           path="/vacancies"
           element={<Vacancies />}
+        />
+        <Route
+          path="/profile"
+          element={<Profile />}
         />
       </Routes>
     </AuthProvider>

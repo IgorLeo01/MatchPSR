@@ -66,7 +66,7 @@ const NavBar: React.FC<NavBarProps> = () => {
             </li>
             <li>
               {loggedIn ? (
-                <NavLink to="/login" className="nav-link">
+                <NavLink to="/profile" className="nav-link">
                   <LoginButton className='loginButton'>Meu Perfil</LoginButton>
                 </NavLink>
               ) : (
