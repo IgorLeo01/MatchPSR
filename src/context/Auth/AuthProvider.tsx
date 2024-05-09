@@ -27,7 +27,8 @@ const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const singout = useCallback(() => {
     setToken(null);
     localStorage.removeItem('@PermissionYT:token');
-    navigate("/"); 
+    navigate("/");
+    window.location.reload(); 
   }, []);
 
   return (

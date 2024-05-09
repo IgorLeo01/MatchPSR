@@ -8,24 +8,11 @@ import Professional from '../../components/Steps/professional';
 import { useForm } from '../../hooks/useForm';
 import Institution from '../../components/Steps/Institution';
 import instance from '../../axiosConfig';
+import { formData } from '../../components/Steps/formData';
 
-const formData = {
-  name: "",
-  birth: "",
-  email: "",
-  phone: "",
-  password: "",
-  zip: "",
-  city: "",
-  document: 0, 
-  address: "",
-  skills: "", 
-  professionalExperience: "", 
-  numberOfEmployees: "",
-};
 
 const CreateAccount: React.FC = () => {
-  const [data, setData] = useState(formData);
+  const [data, setData] = useState(formData);//ver comportamento do cpf e cnpj
 
   const formComponents: React.ComponentType<any>[] = [
     UserType , 
@@ -34,13 +21,13 @@ const CreateAccount: React.FC = () => {
     Institution,
   ];
   
-  const { currentStep, currentComponent, changeStep, isLastStep } = useForm(formComponents);
+  const { currentStep, currentComponent, changeStep, isLastStep} = useForm(formComponents);
  
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Data to be sent:', data);
     try {
-      const response = await instance.post('/ongs/cadastro', data, {
+      const response = await instance.post('http://localhost:8080/auth/register', data, {
         headers: {
           'Content-Type': 'application/json',
       },
@@ -55,7 +42,7 @@ const CreateAccount: React.FC = () => {
       console.error('Erro com dados da empresa:', error);
     }
   };
-  const updateFielHandler = (key: string, value: any) => {
+  const updateFielHandler = (key: string, value: any, userType: string) => {
     setData((prev) => {
       return { ...prev, [key]: value };
     });
@@ -72,9 +59,10 @@ const CreateAccount: React.FC = () => {
             <S.Actions>
               <button type="submit">Voltar</button>
               {!isLastStep ? (
-                <button type="submit">Avançar</button>
+                <button type="button" onClick={() => changeStep(currentStep+1)}>Avançar</button>
+
               ):(
-                <button type="button">Enviar</button>
+                <button type="submit">Enviar</button>
               )}
             </S.Actions>
           )}

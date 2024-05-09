@@ -4,7 +4,6 @@ import { StepProps } from '../../../hooks/StepsProps';
 import { ConfigProvider, Steps } from 'antd';
 import * as S from './style ';
 
-
 const Institution: FC<StepProps> = ({ data, updateFielHandler }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, name: string) => {
     const { value } = e.target;
@@ -14,15 +13,15 @@ const Institution: FC<StepProps> = ({ data, updateFielHandler }) => {
   return (
     <>
       <S.formInstitutionInformation>
-        <InputForm name='Nome' value={data.name} onChange={(e)=>handleInputChange(e, "name")} required/>
-        <InputForm name='CNPJ' value={data.document} onChange={(e)=>handleInputChange(e, "document")} required/>
-        <InputForm name='Número de funcionarios' value={data.numberOfEmployees} onChange={(e)=>handleInputChange(e, "numberOfEmployees")} required/>
-        <InputForm name='Telefone' value={data.phone} onChange={(e)=>handleInputChange(e, "phone")} required/>
+        <InputForm name='Nome' value={data.nome} onChange={(e)=>handleInputChange(e, "nome")} required/>
+        <InputForm name='CNPJ' value={data.cnpj} onChange={(e)=>handleInputChange(e, "cnpj")} required/>
+        <InputForm name='Número de funcionarios' value={data.numeroFuncionarios} onChange={(e)=>handleInputChange(e, "numeroFuncionarios")} required/>
+        <InputForm name='Telefone' value={data.contato_info} onChange={(e)=>handleInputChange(e, "contato_info")} required/>
         <InputForm name='Email' value={data.email} onChange={(e)=>handleInputChange(e, "email")} required/>
-        <InputForm name='Senha' value={data.password} onChange={(e)=>handleInputChange(e, "password")} required/>
-        <InputForm name='Endereço' value={data.address} onChange={(e)=>handleInputChange(e, "address")} required/>
-        <InputForm name='Cidade' value={data.city} onChange={(e)=>handleInputChange(e, "city")} required/>
-        <InputForm name='CEP' value={data.zip} onChange={(e)=>handleInputChange(e, "zips")} required/>
+        <InputForm name='Senha' value={data.senha} onChange={(e)=>handleInputChange(e, "senha")} required/>
+        <InputForm name='Endereço' value={data.endereco} onChange={(e)=>handleInputChange(e, "endereco")} required/>
+        <InputForm name='Cidade' value={data.cidade} onChange={(e)=>handleInputChange(e, "cidade")} required/>
+        <InputForm name='CEP' value={data.cep} onChange={(e)=>handleInputChange(e, "cep")} required/>
       </S.formInstitutionInformation>
       <ConfigProvider
         theme={{

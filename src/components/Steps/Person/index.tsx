@@ -22,29 +22,28 @@ const Person: FC<StepProps> = ({data, updateFielHandler}) => {
 
   const onChange: DatePickerProps['onChange'] = (_, dateStr) => {
     console.log(dateStr);
-    updateFielHandler("birth", dateStr);
+    updateFielHandler("nascimento", dateStr);
   };
-
   return (
     <>
       <S.formPersonInformation>
-        <InputForm name='Nome' value={data.name} onChange={(e)=>handleInputChange(e, "name")} required/>
-        <InputForm name='CPF' value={data.document} onChange={(e)=>handleInputChange(e, "document")} required/>
+        <InputForm name='Nome' value={data.nome} onChange={(e)=>handleInputChange(e, "nome")} required/>
+        <InputForm name='CPF' value={data.cpf} onChange={(e)=>handleInputChange(e, "cpf")} required/>
         <CustomInputStyle>
             <h3>Data de Naciemnto</h3>
             <DatePicker
                 format={dateFormat} 
                 onChange={onChange} 
                 placeholder='__/__/___' style={{ width: '100%' }} 
-                name={data.birth}
+                name={data.nascimento}
             />
         </CustomInputStyle>
-        <InputForm name='Telefone' value={data.phone} onChange={(e)=>handleInputChange(e, "phone")} required/>
+        <InputForm name='Telefone' value={data.contato_info} onChange={(e)=>handleInputChange(e, "contato_info")} required/>
         <InputForm name='Email' value={data.email} onChange={(e)=>handleInputChange(e, "email")} required/>
-        <InputForm name='Senha' isPassword={true} value={data.password} onChange={(e)=>handleInputChange(e, "password")} required/>
-        <InputForm name='Endereço' value={data.address} onChange={(e)=>handleInputChange(e, "address")} required/>
-        <InputForm name='Cidade' value={data.city} onChange={(e)=>handleInputChange(e, "city")} required/>
-        <InputForm name='Cep' value={data.zip} onChange={(e)=>handleInputChange(e, "zip")} required/>
+        <InputForm name='Senha' isPassword={true} value={data.senha} onChange={(e)=>handleInputChange(e, "senha")} required/>
+        <InputForm name='Endereço' value={data.endereco} onChange={(e)=>handleInputChange(e, "endereco")} required/>
+        <InputForm name='Cidade' value={data.cidade} onChange={(e)=>handleInputChange(e, "cidade")} required/>
+        <InputForm name='Cep' value={data.cep} onChange={(e)=>handleInputChange(e, "cep")} required/>
       </S.formPersonInformation>
       <ConfigProvider
         theme={{

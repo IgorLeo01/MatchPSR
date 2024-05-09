@@ -10,7 +10,7 @@ interface NavBarProps {
   onHideNavbar?: () => void;
 }
 
-const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
+const NavBar: React.FC<NavBarProps> = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [userName, setUserName] = useState('');
