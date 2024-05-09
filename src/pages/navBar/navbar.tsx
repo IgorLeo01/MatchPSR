@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { LoginButton } from "../../components/loginButton";
-import { useState } from 'react';
 import '../navBar/nav.css';
 import logo from "../../images/logo.svg";
 
@@ -12,6 +11,19 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const token = localStorage.getItem('@PermissionYT:token');
+    if (token) {
+      setLoggedIn(true);
+      const storedUserName = localStorage.getItem('userName');
+      if (storedUserName) {
+        setUserName(storedUserName);
+      }
+    }
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -19,7 +31,7 @@ const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
 
   const handleClick = () => {
     console.log("teste");
-  }
+  };
 
   return (
     <nav className="main">
@@ -45,9 +57,15 @@ const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/login" className="nav-link" onClick={handleClick}>
-                <LoginButton className='loginButton'>Entrar</LoginButton>
-              </NavLink>
+              {loggedIn ? (
+                <NavLink to="/login" className="nav-link" onClick={handleClick}>
+                  <LoginButton className='loginButton'>Meu Perfil</LoginButton>
+                </NavLink>
+              ) : (
+                <NavLink to="/login" className="nav-link" onClick={handleClick}>
+                  <LoginButton className='loginButton'>Entrar</LoginButton>
+                </NavLink>
+              )}
             </li>
           </ul>
         </div>
@@ -59,7 +77,7 @@ const NavBar: React.FC<NavBarProps> = ({ currentPage }) => {
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
 export default NavBar;
