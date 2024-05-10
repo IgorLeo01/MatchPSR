@@ -1,12 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import * as s from "./style";
-import { NavLink } from "react-router-dom";
 import localImg from "../../images/HomeFilled.svg";
 import competenciasImg from "../../images/Group.svg";
 import quantidadeImg from "../../images/Group (1).svg";
 import { Button } from "../buttons";
-import { useNavigate } from "react-router-dom";
 
 interface VacanciesProps {
   cargo: string;
