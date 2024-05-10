@@ -1,8 +1,8 @@
-import{ createContext } from "react";
-
+import { createContext } from "react";
 
 interface AuthContextState {
   token: string | null;
+  userId: string | null;
   signIn(credentials: UserCredentials): Promise<void>;
   singout: () => void;
 }
