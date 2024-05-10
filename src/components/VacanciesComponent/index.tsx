@@ -16,7 +16,8 @@ interface VacanciesProps {
   numeroVagas: number;
   logo?: any;
   nomeEmpresa?: string;
-  vacancyRoute: () => void;
+  handleSubmit?: () => void;
+  handleDelete?: () => void;
 }
 
 const VacanciesComponent: React.FC<VacanciesProps> = ({
@@ -26,7 +27,8 @@ const VacanciesComponent: React.FC<VacanciesProps> = ({
   localizacao,
   competencias,
   numeroVagas,
-  vacancyRoute,
+  handleSubmit,
+  handleDelete,
 }) => {
   return (
     <s.Content>
@@ -65,29 +67,41 @@ const VacanciesComponent: React.FC<VacanciesProps> = ({
           />
           <span>{numeroVagas} vagas</span>
         </div>
-        <div className="descriptionButtons">
-          <div>
+        {handleSubmit ? (
+          <div className="descriptionButtons">
+            <div>
+              <Button
+                isBlueOutline
+                style={{ width: "100px", fontSize: "12px", height: "25px" }}
+                onClick={handleSubmit}
+              >
+                Saiba mais
+              </Button>
+              <Button
+                isBlue
+                style={{
+                  width: "100px",
+                  marginLeft: "10px",
+                  fontSize: "12px",
+                  height: "25px",
+                }}
+                onClick={handleSubmit}
+              >
+                Aplicar
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <div className="descriptionButtons">
             <Button
               isBlueOutline
               style={{ width: "100px", fontSize: "12px", height: "25px" }}
-              onClick={vacancyRoute}
+              onClick={handleDelete}
             >
-              Saiba mais
-            </Button>
-            <Button
-              isBlue
-              style={{
-                width: "100px",
-                marginLeft: "10px",
-                fontSize: "12px",
-                height: "25px",
-              }}
-              onClick={vacancyRoute}
-            >
-              Aplicar
+              Finalizar vaga
             </Button>
           </div>
-        </div>
+        )}
       </div>
     </s.Content>
   );
