@@ -96,7 +96,9 @@ const CreateAccount: React.FC = () => {
           })}
           {currentStep > 0 && (
             <S.Actions>
-              <button type="submit">Voltar</button>
+              <button type="button" onClick={() => changeStep(currentStep - 1)}>
+                Voltar
+              </button>
               {!isLastStep ? (
                 <button
                   type="button"
@@ -106,7 +108,7 @@ const CreateAccount: React.FC = () => {
                 </button>
               ) : (
                 <button type="submit">Enviar</button>
-              )} 
+              )}
             </S.Actions>
           )}
         </form>

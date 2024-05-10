@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Input } from "antd";
+import TextArea from "antd/es/input/TextArea";
 
 interface CustomInputProps {
   name: string;
@@ -20,18 +21,22 @@ export const CustomInputStyle = styled.div`
   padding-bottom: 20px;
 `;
 
-const TextArea: React.FC<CustomInputProps> = ({
+const TextAreaComponent: React.FC<CustomInputProps> = ({
   name,
   value,
   required,
   placeHolder,
+  onChange,
 }) => {
   return (
     <CustomInputStyle>
       <h3>{name}</h3>
-      <textarea
+      <TextArea
         required={required}
         name={value}
+        onChange={
+          onChange as unknown as React.ChangeEventHandler<HTMLTextAreaElement>
+        }
         style={{ width: "100%", height: "100%", borderColor: "#01A7E1" }}
         placeholder={placeHolder}
       />
@@ -39,4 +44,4 @@ const TextArea: React.FC<CustomInputProps> = ({
   );
 };
 
-export default TextArea;
+export default TextAreaComponent;

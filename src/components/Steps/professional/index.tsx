@@ -2,7 +2,7 @@
 import { ConfigProvider, Steps } from "antd";
 import React, { FC } from "react";
 import { StepProps } from "../../../hooks/StepsProps";
-import TextArea from "../../inportForm/TextArea";
+import TextAreaComponent from "../../inportForm/TextArea";
 
 const Professional: FC<StepProps> = ({ data, updateFielHandler }) => {
   const handleInputChange = (
@@ -27,7 +27,7 @@ const Professional: FC<StepProps> = ({ data, updateFielHandler }) => {
         paddingTop: "70px",
       }}
     >
-      <TextArea
+      <TextAreaComponent
         name="Experiência profissional"
         value={data.description}
         required={true}
