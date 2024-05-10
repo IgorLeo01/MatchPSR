@@ -20,4 +20,7 @@ export const Container = styled.div`
         margin: 30px 0 0 30px;
     }
 `;
+export const Actions = styled.div`
+  
+`;
 

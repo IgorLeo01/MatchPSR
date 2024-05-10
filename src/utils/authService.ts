@@ -1,23 +1,29 @@
-import axios from 'axios';
-
+import axios from "axios";
 
 export const authService = {
-  async login(credentials: UserCredentials) {
+  async postLogin(credentials: UserCredentials) {
+    const response = await axios.post<{
+      token: string;
+      userId: string;
+      roles: string[];
+    }>(`https://matchpsr-api.onrender.com/auth/login`, credentials);
+    return response.data;
+  },
+  async validateToken(token: string) {
     try {
-      const response = await axios.post<{ token: string }>('/api/login', credentials);
-      return response.data.token;
+      const response = await axios.post("/validate", { token });
+      return response.data;
     } catch (error) {
-      console.error('Error during login:', error);
-      throw error; 
+      console.error("Error during login:", error);
+      throw error;
     }
   },
   async logout() {
     try {
-      await axios.post('/logout');
+      await axios.post("/logout");
     } catch (error) {
-      console.error('Error during logout:', error);
+      console.error("Error during logout:", error);
       throw error;
     }
-  }
-  
+  },
 };
