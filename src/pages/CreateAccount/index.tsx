@@ -36,7 +36,7 @@ const CreateAccount: React.FC = () => {
     e.preventDefault();
     try {
       const response = await instance.post(
-        "http://localhost:8080/auth/register",
+        "https://matchpsr-api.onrender.com/auth/register",
         data,
         {
           headers: {

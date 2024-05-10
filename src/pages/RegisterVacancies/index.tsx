@@ -27,7 +27,7 @@ const RegisterVacancies: React.FC = () => {
     e.preventDefault();
     try {
       const response = await instance.post(
-        `http://localhost:8080/api/vagas/criar/${userId}`,
+        `https://matchpsr-api.onrender.com/api/vagas/criar/${userId}`,
         data,
         {
           headers: {

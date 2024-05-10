@@ -16,7 +16,7 @@ function Vacancies() {
   >();
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/vagas/listar")
+      .get("https://matchpsr-api.onrender.com/api/vagas/listar")
       .then((response) => {
         setVacancies(response.data);
       })
@@ -32,7 +32,9 @@ function Vacancies() {
   const handleSubmit = (idVaga: string) => {
     const userId = localStorage.getItem("userId");
     axios
-      .post(`http://localhost:8080/api/vagas/${idVaga}/aplicar/${userId}`)
+      .post(
+        `https://matchpsr-api.onrender.com/api/vagas/${idVaga}/aplicar/${userId}`
+      )
       .then((response) => {
         setAlertMessage(
           "Vaga submetida com sucesso. Aguarde aprovação da empresa no seu e-mail."

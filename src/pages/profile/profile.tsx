@@ -31,7 +31,7 @@ const Profile: React.FC = () => {
   useEffect(() => {
     const id = localStorage.getItem("userId");
     axios
-      .get<UserInfo>(`http://localhost:8080/users/${id}`)
+      .get<UserInfo>(`https://matchpsr-api.onrender.com/users/${id}`)
       .then((response) => {
         setUserInfo(response.data);
         setEditData(response.data);
@@ -40,7 +40,7 @@ const Profile: React.FC = () => {
         console.error("Error fetching user data:", error);
       });
     axios
-      .get(`http://localhost:8080/api/vagas/empresa/${id}`)
+      .get(`https://matchpsr-api.onrender.com/api/vagas/empresa/${id}`)
       .then((response) => {
         setVacancies(response.data);
       })
@@ -67,7 +67,7 @@ const Profile: React.FC = () => {
   };
   const handleDelete = (idVaga: string) => {
     axios
-      .delete(`http://localhost:8080/api/vagas/${idVaga}`)
+      .delete(`https://matchpsr-api.onrender.com/api/vagas/${idVaga}`)
       .then((response) => {
         setAlertMessage("Vaga finalizada com sucesso.");
         setAlertType("success");
@@ -92,7 +92,7 @@ const Profile: React.FC = () => {
     if (editData) {
       const id = localStorage.getItem("userId");
       axios
-        .put(`http://localhost:8080/users/${id}`, editData)
+        .put(`https://matchpsr-api.onrender.com/users/${id}`, editData)
         .then((response) => {
           setUserInfo(response.data); // Atualiza o estado com os novos dados
           setModalOpen(false); // Fecha o modal após a atualização
