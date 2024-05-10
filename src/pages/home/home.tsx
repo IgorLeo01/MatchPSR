@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '../../components/buttons'
 import * as s from './style'
 import imageHome from "../../images/image-home.svg"

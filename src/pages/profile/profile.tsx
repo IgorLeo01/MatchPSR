@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios"; // Importing Axios
 import * as s from "./style";
-import { NavLink } from "react-router-dom";
-import { Modal, Button, Form, Input, Space, Alert } from "antd";
+import { Modal, Form, Input, Space, Alert } from "antd";
 import VacanciesComponent from "../../components/VacanciesComponent";
 
 // Define an interface for user information
@@ -68,7 +67,7 @@ const Profile: React.FC = () => {
   const handleDelete = (idVaga: string) => {
     axios
       .delete(`https://matchpsr-api.onrender.com/api/vagas/${idVaga}`)
-      .then((response) => {
+      .then(() => {
         setAlertMessage("Vaga finalizada com sucesso.");
         setAlertType("success");
         setTimeout(() => {

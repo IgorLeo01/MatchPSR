@@ -1,4 +1,3 @@
-import React from 'react';
 import PartnerCards from '../../../components/partnerCards';
 import sama from '../../../images/sama.png';
 import prg from '../../../images/prg.svg';

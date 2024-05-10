@@ -35,8 +35,8 @@ const CreateAccount: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await instance.post(
-        "https://matchpsr-api.onrender.com/auth/register",
+      instance.post(
+        "/auth/register",
         data,
         {
           headers: {

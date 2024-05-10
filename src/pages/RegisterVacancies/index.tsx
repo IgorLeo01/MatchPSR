@@ -17,7 +17,7 @@ const RegisterVacancies: React.FC = () => {
   const [alertType, setAlertType] = useState<
     "success" | "error" | "info" | "warning" | undefined
   >();
-  const [userId, setUserId] = useState<string | null>(() => {
+  const [userId] = useState<string | null>(() => {
     const storedId = localStorage.getItem("userId");
     return storedId || null;
   });
@@ -26,8 +26,8 @@ const RegisterVacancies: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await instance.post(
-        `https://matchpsr-api.onrender.com/api/vagas/criar/${userId}`,
+      instance.post(
+        `/api/vagas/criar/${userId}`,
         data,
         {
           headers: {

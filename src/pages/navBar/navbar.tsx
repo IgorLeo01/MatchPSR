@@ -14,7 +14,6 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userName, setUserName] = useState("");
   const [roles, setRoles] = useState([""]);
   const [isCompany, setIsCompany] = useState(false);
   const { singout } = useContext(AuthContext);
@@ -23,12 +22,8 @@ const NavBar: React.FC<NavBarProps> = () => {
     const token = localStorage.getItem("@PermissionYT:token");
     if (token) {
       setLoggedIn(true);
-      const storedUserName = localStorage.getItem("userName");
       const storedRoles = localStorage.getItem("roles");
       setRoles(JSON.parse(storedRoles || "[]"));
-      if (storedUserName) {
-        setUserName(storedUserName);
-      }
     }
   }, []);
 

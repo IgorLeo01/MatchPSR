@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Input } from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 interface CustomInputProps {

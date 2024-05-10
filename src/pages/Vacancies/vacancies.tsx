@@ -35,7 +35,7 @@ function Vacancies() {
       .post(
         `https://matchpsr-api.onrender.com/api/vagas/${idVaga}/aplicar/${userId}`
       )
-      .then((response) => {
+      .then(() => {
         setAlertMessage(
           "Vaga submetida com sucesso. Aguarde aprovação da empresa no seu e-mail."
         );
