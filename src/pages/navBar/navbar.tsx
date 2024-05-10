@@ -1,9 +1,10 @@
-import { NavLink } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { NavLink } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 import { LoginButton } from "../../components/loginButton";
-import '../navBar/nav.css';
+import "../navBar/nav.css";
 import logo from "../../images/logo.svg";
-import { AuthContext } from '../../context/Auth/AuthContext';
+import { AuthContext } from "../../context/Auth/AuthContext";
 
 interface NavBarProps {
   currentPage?: string;
@@ -13,53 +14,71 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState("");
+  const [roles, setRoles] = useState([""]);
+  const [isCompany, setIsCompany] = useState(false);
   const { singout } = useContext(AuthContext);
 
-
   useEffect(() => {
-    const token = localStorage.getItem('@PermissionYT:token');
+    const token = localStorage.getItem("@PermissionYT:token");
     if (token) {
       setLoggedIn(true);
-      const storedUserName = localStorage.getItem('userName');
+      const storedUserName = localStorage.getItem("userName");
+      const storedRoles = localStorage.getItem("roles");
+      setRoles(JSON.parse(storedRoles || "[]"));
       if (storedUserName) {
         setUserName(storedUserName);
       }
     }
   }, []);
 
+  useEffect(() => {
+    if (roles.includes("ROLE_EMPRESA")) {
+      setIsCompany(true);
+    }
+  }, [roles]);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-
-  
 
   return (
     <nav className="main">
       <div className="content">
         <div className="logo">
-          <img
-            src={logo}
-            alt="Logomarca"
-            width={161}
-            height={36}
-          />
+          <img src={logo} alt="Logomarca" width={161} height={36} />
         </div>
-        <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
+        <div className={`nav-links ${menuOpen ? "active" : ""}`}>
           <ul className="pagesLists">
             <li>
-              <NavLink to="/" className="nav-link" >
+              <NavLink to="/" className="nav-link">
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/vacancies" className="nav-link" >
-                Vagas
-              </NavLink>
+              {loggedIn ? (
+                isCompany ? (
+                  <NavLink to="/vacancies" className="nav-link">
+                    Oferecer Vaga
+                  </NavLink>
+                ) : (
+                  <NavLink to="/vacancies" className="nav-link">
+                    Vagas
+                  </NavLink>
+                )
+              ) : (
+                <NavLink to="/vacancies" className="nav-link">
+                  Vagas
+                </NavLink>
+              )}
             </li>
             <li>
               {loggedIn && (
-                <span style={{ cursor: 'pointer', fontSize: 16, fontWeight: 600}} className="nav-link" onClick={() => singout()} >
+                <span
+                  style={{ cursor: "pointer", fontSize: 16, fontWeight: 600 }}
+                  className="nav-link"
+                  onClick={() => singout()}
+                >
                   Sair
                 </span>
               )}
@@ -67,19 +86,18 @@ const NavBar: React.FC<NavBarProps> = () => {
             <li>
               {loggedIn ? (
                 <NavLink to="/profile" className="nav-link">
-                  <LoginButton className='loginButton'>Meu Perfil</LoginButton>
+                  <LoginButton className="loginButton">Meu Perfil</LoginButton>
                 </NavLink>
               ) : (
-                <NavLink to="/login" className="nav-link" >
-                  <LoginButton className='loginButton'>Entrar</LoginButton>
+                <NavLink to="/login" className="nav-link">
+                  <LoginButton className="loginButton">Entrar</LoginButton>
                 </NavLink>
               )}
             </li>
-            
           </ul>
         </div>
         <div
-          className={`nav-icon ${menuOpen ? 'active' : ''}`}
+          className={`nav-icon ${menuOpen ? "active" : ""}`}
           onClick={toggleMenu}
         >
           ☰
@@ -87,6 +105,6 @@ const NavBar: React.FC<NavBarProps> = () => {
       </div>
     </nav>
   );
-}
+};
 
 export default NavBar;
