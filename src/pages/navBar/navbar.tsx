@@ -58,7 +58,7 @@ const NavBar: React.FC<NavBarProps> = () => {
             <li>
               {loggedIn ? (
                 isCompany ? (
-                  <NavLink to="/vacancies" className="nav-link">
+                  <NavLink to="/registerVacancies" className="nav-link">
                     Oferecer Vaga
                   </NavLink>
                 ) : (

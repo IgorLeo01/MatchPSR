@@ -3,8 +3,8 @@ import React from "react";
 interface FormProps {
   currentStep: number;
   currentComponent: React.ComponentType<any>;
-  changeStep: (i: number,  event?: React.FormEvent<HTMLFormElement>) => void;
-  isLastStep: any
+  changeStep: (i: number, event?: React.FormEvent<HTMLFormElement>) => void;
+  isLastStep: any;
 }
 
 export function useForm(steps: React.ComponentType<any>[]): FormProps {
@@ -15,7 +15,7 @@ export function useForm(steps: React.ComponentType<any>[]): FormProps {
       event.preventDefault();
     }
 
-    if(i<0 || i>=steps.length) return;
+    if (i < 0 || i >= steps.length) return;
 
     setCurrentStep(i);
   }
@@ -23,6 +23,9 @@ export function useForm(steps: React.ComponentType<any>[]): FormProps {
     currentStep,
     currentComponent: steps[currentStep],
     changeStep,
-    isLastStep: currentStep === 2 || currentStep === 4 ? true : false,
+    isLastStep:
+      currentStep === 2 || currentStep === 3 || currentStep === 4
+        ? true
+        : false,
   };
 }

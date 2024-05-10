@@ -23,7 +23,6 @@ const Person: FC<StepProps> = ({ data, updateFielHandler }) => {
   };
 
   const onChange: DatePickerProps["onChange"] = (_, dateStr) => {
-    console.log(dateStr);
     updateFielHandler("nascimento", dateStr);
   };
   return (

@@ -34,7 +34,6 @@ const CreateAccount: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Data to be sent:", data);
     try {
       const response = await instance.post(
         "http://localhost:8080/auth/register",

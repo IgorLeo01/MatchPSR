@@ -8,12 +8,12 @@ const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const navigate = useNavigate();
 
   const [token, setToken] = useState<string | null>(() => {
-    const storedId = localStorage.getItem("@PermissionYT:token");
-    return storedId || null;
+    const storedToken = localStorage.getItem("@PermissionYT:token");
+    return storedToken || null;
   });
   const [userId, setUserId] = useState<string | null>(() => {
-    const storedToken = localStorage.getItem("userId");
-    return storedToken || null;
+    const storedId = localStorage.getItem("userId");
+    return storedId || null;
   });
   const [roles, setRoles] = useState<string[] | null>(() => {
     const storedRoles = localStorage.getItem("roles");
