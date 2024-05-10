@@ -106,7 +106,7 @@ const CreateAccount: React.FC = () => {
                 </button>
               ) : (
                 <button type="submit">Enviar</button>
-              )}
+              )} 
             </S.Actions>
           )}
         </form>
