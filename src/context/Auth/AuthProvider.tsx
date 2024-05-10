@@ -15,6 +15,10 @@ const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const storedToken = localStorage.getItem("userId");
     return storedToken || null;
   });
+  const [roles, setRoles] = useState<string[] | null>(() => {
+    const storedRoles = localStorage.getItem("roles");
+    return storedRoles ? [storedRoles] : null;
+  });
 
   const signIn = useCallback((credentials: UserCredentials) => {
     return authService
@@ -22,9 +26,10 @@ const AuthProvider = ({ children }: { children: JSX.Element }) => {
       .then((data) => {
         setToken(data.token);
         setUserId(data.userId);
+        setRoles(data.roles);
         localStorage.setItem("@PermissionYT:token", data.token || "");
         localStorage.setItem("userId", data.userId || "");
-
+        localStorage.setItem("roles", JSON.stringify(data.roles) || "");
         navigate("/");
       })
       .catch((error) => {
@@ -35,12 +40,14 @@ const AuthProvider = ({ children }: { children: JSX.Element }) => {
   const singout = useCallback(() => {
     setToken(null);
     localStorage.removeItem("@PermissionYT:token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("roles");
     navigate("/");
     window.location.reload();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ token, userId, signIn, singout }}>
+    <AuthContext.Provider value={{ token, userId, roles, signIn, singout }}>
       {children}
     </AuthContext.Provider>
   );

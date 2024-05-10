@@ -2,10 +2,11 @@ import axios from "axios";
 
 export const authService = {
   async postLogin(credentials: UserCredentials) {
-    const response = await axios.post<{ token: string; userId: string }>(
-      `http://localhost:8080/auth/login`,
-      credentials
-    );
+    const response = await axios.post<{
+      token: string;
+      userId: string;
+      roles: string[];
+    }>(`http://localhost:8080/auth/login`, credentials);
     return response.data;
   },
   async validateToken(token: string) {
