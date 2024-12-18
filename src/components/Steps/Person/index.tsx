@@ -41,7 +41,7 @@ const Person: FC<StepProps> = ({ data, updateFielHandler }) => {
           required
         />
         <CustomInputStyle>
-          <h3>Data de Naciemnto</h3>
+          <h3>Data de Nascimento</h3>
           <DatePicker
             format={dateFormat}
             onChange={onChange}
